@@ -16,7 +16,7 @@ def parse_google_form_csv(file_path):
     """
     Парсит CSV файл, полученный из Google Формы.
     """
-    with open(file_path, mode='r', encoding='utf-8-sig') as file:
+    with open(file_path, mode='r') as file:
         reader = csv.reader(file)
         questions = next(reader)
         answers = {}
@@ -101,7 +101,7 @@ def save_to_csv(data, output_file):
 
 async def main():
     # Если путь к CSV файлу передан через аргументы командной строки, используем его
-    file_path = sys.argv[1] if len(sys.argv) > 1 else 'new_form.csv'
+    file_path = sys.argv[1] if len(sys.argv) > 1 else 'new_form+.csv'
 
     # Читаем CSV
     questions, answers_dict = parse_google_form_csv(file_path)
